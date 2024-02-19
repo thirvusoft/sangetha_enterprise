@@ -28,7 +28,8 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"Opportunity" : "/sangeetha_enterprise/utils/js/opportunity.js"}
+doctype_js = {"Opportunity" : "/sangeetha_enterprise/utils/js/opportunity.js",
+'Sales Invoice':"/sangeetha_enterprise/utils/js/sales_invoice.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -59,10 +60,12 @@ doctype_js = {"Opportunity" : "/sangeetha_enterprise/utils/js/opportunity.js"}
 # ----------
 
 # add methods and filters to jinja environment
-# jinja = {
-#	"methods": "sangetha_enterprise.utils.jinja_methods",
-#	"filters": "sangetha_enterprise.utils.jinja_filters"
-# }
+jinja = {
+    "methods" : [
+      "sangetha_enterprise.sangeetha_enterprise.utils.py.print_format.get_invoice_item_and_tax_details",
+       "frappe.utils.data.money_in_words"
+    ]
+}
 
 # Installation
 # ------------
@@ -114,21 +117,19 @@ doctype_js = {"Opportunity" : "/sangeetha_enterprise/utils/js/opportunity.js"}
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Sales Invoice": "sangetha_enterprise.sangeetha_enterprise.utils.py.sales_invoice.CustomSalesInvoice"
+}
 
 # Document Events
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Sales Invoice": {
+		"validate": "sangetha_enterprise.sangeetha_enterprise.utils.py.sales_invoice.validate"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
