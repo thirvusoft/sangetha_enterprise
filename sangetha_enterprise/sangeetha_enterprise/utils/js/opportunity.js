@@ -1,20 +1,20 @@
 frappe.ui.form.on("Opportunity", {
-    refresh: function(frm) {
-        frm.set_query('item_code',"items", function(doc){
+    refresh: function(frm){
+        frm.set_query('item_code', 'items', function(doc, cdt, cdn){
+            let row = locals[cdt][cdn]
             let value={}
-            if (frm.doc.custom_item_group){
-                value["item_group"]= frm.doc.custom_item_group
+            if (row.item_group){
+                value["item_group"]= row.item_group
             }
-            if (frm.doc.custom_brand){
-                value["brand"]= frm.doc.custom_brand
+            if (row.brand){
+                value["brand"]= row.brand
             }
-            if (frm.doc.custom_category){
-                value["custom_category"]= frm.doc.custom_category
+            if (row.custom_category){
+                value["custom_category"]= row.custom_category
             }
 			return{
 				"filters":value
-			}
-		});
-
+			} 
+        });
     }
 })
