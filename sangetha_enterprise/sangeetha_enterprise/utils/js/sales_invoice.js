@@ -13,7 +13,6 @@ frappe.ui.form.on("Sales Invoice Item", {
                 frappe.model.set_value(row.doctype,row.name,'custom_lowest_margin',res.message.custom_lowest_margin)
                 frappe.model.set_value(row.doctype,row.name,'custom_highest_margin_rate',res.message.custom_highest_margin_rate)
                 frappe.model.set_value(row.doctype,row.name,'custom_highest_margin',res.message.custom_highest_margin)
-
             }
         })
     },

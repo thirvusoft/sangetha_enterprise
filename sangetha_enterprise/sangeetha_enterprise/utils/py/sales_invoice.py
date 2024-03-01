@@ -14,8 +14,15 @@ def get_margin_rate(item_code,rate):
 	highest_rate = frappe.get_value('Item Price',{'item_code':item_code},'price_list_rate',order_by='price_list_rate desc') or 0
 	lowest_rate = frappe.get_value('Item Price',{'item_code':item_code},'price_list_rate',order_by='price_list_rate asc') or 0
 	if float(rate):
-		highest_margin = ((float(rate) - highest_rate)/highest_rate) * 100
-		lowest_margin = ((float(rate) - lowest_rate )/lowest_rate) * 100
+		if highest_rate:
+			highest_margin = ((float(rate) - highest_rate)/highest_rate) * 100
+		else:
+			highest_margin = 0
+		if lowest_rate:
+			lowest_margin = ((float(rate) - lowest_rate )/lowest_rate) * 100
+		else:
+			lowest_margin = 0
+
 	else:
 		highest_margin = 0
 		lowest_margin = 0
