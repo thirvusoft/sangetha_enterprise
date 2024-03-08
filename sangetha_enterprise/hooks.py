@@ -128,7 +128,13 @@ override_doctype_class = {
 doc_events = {
 	"Sales Invoice": {
 		"validate": "sangetha_enterprise.sangeetha_enterprise.utils.py.sales_invoice.validate"
-	}
+	},
+  # "Purchase Order":{
+  #     "on_submit": "sangetha_enterprise.sangeetha_enterprise.utils.py.purchase_order.on_submit"
+  # },
+  # "Sales Order":{
+  #     "on_submit":"sangetha_enterprise.sangeetha_enterprise.utils.py.sales_order.on_submit"
+  # }
 }
 
 # Scheduled Tasks

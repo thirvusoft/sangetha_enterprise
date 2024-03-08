@@ -264,3 +264,4 @@ def check_credit_limit(self, customer, company, ignore_outstanding_sales_order=F
 			# )
 	else:
 		self.custom_credit_exceeded = 0
+
